@@ -1,0 +1,13 @@
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.exe
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.deps.json
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.runtimeconfig.json
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.runtimeconfig.dev.json
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.dll
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\bin\Debug\netcoreapp3.1\RetiraComentario.pdb
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.csprojAssemblyReference.cache
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.AssemblyInfoInputs.cache
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.AssemblyInfo.cs
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.csproj.CoreCompileInputs.cache
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.dll
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.pdb
+D:\_src\retiracomentarios\RetiraComentario\RetiraComentario\obj\Debug\netcoreapp3.1\RetiraComentario.genruntimeconfig.cache
