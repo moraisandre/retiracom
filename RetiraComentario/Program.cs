@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace RetiraComentario
 {
@@ -8,63 +8,59 @@ namespace RetiraComentario
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
+            string arquivo;
+
+            if (args.Length <= 0)
             {
-                Console.WriteLine("Entre com um parametro, caminho até o script");
-                string arquivo = Console.ReadLine();
-                lerarquivo(arquivo);
+                Console.WriteLine("Entre com o caminho do arquivo para remover os comentário:");
+                arquivo = Console.ReadLine();
             }
             else
             {
-
-                string arquivo = args[0];
-
-                lerarquivo(arquivo);
+                arquivo = args[0];
             }
+
+            CarregaArquivo(arquivo);
         }
 
-        public static void lerarquivo(string arquivo)
+        public static void CarregaArquivo(string arquivo)
         {
             string conteudo = File.ReadAllText(arquivo);
-            conteudo = retirarcomentario(conteudo);
+            conteudo = RemoveComentarios(conteudo);
 
-            File.WriteAllText(arquivo + "new", conteudo);            
+            FileInfo arquivoAtual = new FileInfo(arquivo);
+            string novoArquivo = arquivoAtual.DirectoryName + @"\" + Path.GetFileNameWithoutExtension(arquivoAtual.Name) + "_new" + arquivoAtual.Extension;
+
+            File.Copy(arquivoAtual.FullName, novoArquivo);
+
+            File.WriteAllText(novoArquivo, conteudo);
         }
 
-        public static string retirarcomentario(string conteudo)
+        public static string RemoveComentarios(string conteudo)
         {
 
-            int cont = 2;
-
-            for (int i = 3; i >= cont; i++)
+            while (conteudo.Contains("/*") && conteudo.Contains("*/"))
             {
-                if (conteudo.Contains("/*"))
-                {
-                    int ftag = conteudo.IndexOf("/*");
-                    int ltag = conteudo.IndexOf("*/");
+                int inicio = conteudo.IndexOf("/*");
+                int fim = conteudo.IndexOf("*/") + 2;
 
-                    string retiratag = conteudo.Substring(ftag, ltag - ftag + 2);
-                    int cnt = retiratag.Split("/*").Length - 1;
+                conteudo = conteudo.Remove(inicio, fim - inicio);
+            }
 
-                    if (cnt == 1)
-                    {
-                        conteudo = conteudo.Replace(retiratag, "");
-                    }
-                    else
-                    {
+            return conteudo;
+        }
 
-                        int tagf = retiratag.LastIndexOf("/*");
-                        int tagl = retiratag.IndexOf("*/");
+        public static string RemoveComentariosRegex(string conteudo)
+        {
+            var matches = Regex.Matches(conteudo, @"\/\*(\*(?!\/)|[^*])*\*\/");
+            while (matches.Count > 0)
+            {
+                int inicio = matches[0].Index;
+                int fim = matches[0].Length;
 
-                        string rettag = retiratag.Substring(tagf, tagl - tagf + 2);
-                        conteudo = conteudo.Replace(rettag, "");
+                conteudo = conteudo.Remove(inicio, fim);
 
-                    }
-                }
-                else
-                {
-                    i = 0;
-                }
+                matches = Regex.Matches(conteudo, @"\/\*(\*(?!\/)|[^*])*\*\/");
             }
 
             return conteudo;
